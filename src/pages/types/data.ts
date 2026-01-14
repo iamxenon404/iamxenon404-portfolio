@@ -21,38 +21,39 @@ export interface StackCategory {
 }
 
 // 1. MASTER PROJECT LIST (Centralized)
+// Using a single high-tech abstract image for the "Coming Soon" phase
+const LOCKED_IMAGE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop";
+
 export const allProjects: Project[] = [
   {
     id: 'p1',
-    title: 'Nexus Dashboard',
-    description: 'A high-performance real-time monitoring tool with cross-platform synchronization.',
-    image: 'https://images.unsplash.com/photo-1551288049-bbda4e3a4e92?q=80&w=2070&auto=format&fit=crop', // Replace with your actual paths
-    github: 'https://github.com/youruser/nexus',
-    link: 'https://nexus-demo.com',
-    categoryIds: ['JS', 'DB', 'CLOUD'],
-    tech: ['Next.js', 'TRPC', 'Tailwind', 'PostgreSQL', 'Docker'],
-    stars: '1.2k'
+    title: '[ CLASSIFIED_01 ]',
+    description: 'System architecture in progress. Full stack deployment pending final encryption protocols.',
+    image: LOCKED_IMAGE, 
+    github: '#',
+    categoryIds: ['JS', 'DB'],
+    tech: ['React', 'TS', 'Node'],
+    stars: '---'
   },
   {
     id: 'p2',
-    title: 'Neural Engine',
-    description: 'Custom implementation of pattern recognition logic and data processing pipeline.',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop',
-    github: 'https://github.com/youruser/neural',
-    categoryIds: ['PY', 'JS'],
-    tech: ['FastAPI', 'NumPy', 'React', 'Tailwind'],
-    stars: '450'
+    title: '[ CLASSIFIED_02 ]',
+    description: 'Python-based data processing engine. Awaiting kernel synchronization and API clearance.',
+    image: LOCKED_IMAGE,
+    github: '#',
+    categoryIds: ['PY'],
+    tech: ['Python', 'FastAPI'],
+    stars: '---'
   },
   {
     id: 'p3',
-    title: 'Zenith Mobile',
-    description: 'A native-feel financial tracking application with offline persistence.',
-    image: 'https://images.unsplash.com/photo-1616353071588-708dcff912e2?q=80&w=2070&auto=format&fit=crop',
-    github: 'https://github.com/youruser/zenith',
-    link: 'https://zenith-app.com',
-    categoryIds: ['FL', 'DB'],
-    tech: ['Dart', 'Riverpod', 'SQLite', 'Firebase'],
-    stars: '890'
+    title: '[ CLASSIFIED_03 ]',
+    description: 'Cross-platform mobile interface. UI/UX modules currently in stealth mode development.',
+    image: LOCKED_IMAGE,
+    github: '#',
+    categoryIds: ['FL'],
+    tech: ['Flutter', 'Dart'],
+    stars: '---'
   }
 ];
 

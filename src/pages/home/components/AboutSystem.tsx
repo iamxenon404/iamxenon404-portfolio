@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AboutSystem() {
@@ -18,7 +18,7 @@ export default function AboutSystem() {
   }, []);
 
   return (
-    <section className="relative w-full py-32 px-6 md:px-20 bg-(--bg-color) overflow-hidden border-t border-zinc-500/10">
+    <section className="relative w-full py-32 px-6 md:px-20 bg-(--bg-color) overflow-hidden border-t border-zinc-500/10" id='about'>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         
         {/* Left: Identity & Status */}
@@ -72,7 +72,7 @@ export default function AboutSystem() {
           <motion.div 
             animate={{ top: ["0%", "100%", "0%"] }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-            className="absolute -left-4 w-[2px] h-20 bg-gradient-to-b from-transparent via-blue-500 to-transparent z-0 opacity-50 hidden md:block"
+            className="absolute -left-4 w-0.5 h-20 bg-linear-to-b from-transparent via-blue-500 to-transparent z-0 opacity-50 hidden md:block"
           />
 
           <div className="relative group space-y-12">
@@ -125,7 +125,7 @@ export default function AboutSystem() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 backdrop-blur-2xl bg-black/80"
+      className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-10 backdrop-blur-2xl bg-black/80"
       onClick={() => setIsOpen(false)}
     >
       <motion.div 

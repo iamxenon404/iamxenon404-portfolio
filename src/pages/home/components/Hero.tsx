@@ -23,10 +23,11 @@ export default function Hero() {
     >
       {/* 1. SECTON BG EFFECT: Adaptive Particle Warp */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(var(--text-color)_1px,transparent_1px)] [background-size:40px_40px]" />
+        <div className="absolute inset-0 opacity-10 dark:opacity-20 bg-[radial-gradient(var(--text-color)_1px,transparent_1px)] bg-size-[40px_40px]" />
+        
         <motion.div 
           style={{ x: useTransform(mouseX, [-500, 500], [20, -20]), y: useTransform(mouseY, [-500, 500], [20, -20]) }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(59,130,246,0.05)_0%,_transparent_50%)]"
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05)_0%,transparent_50%)]"
         />
       </div>
 
@@ -118,13 +119,30 @@ export default function Hero() {
           </motion.p>
           
           <div className="mt-12 flex flex-col md:flex-row gap-5 items-center">
-            <button className="w-full md:w-auto px-12 py-4 rounded-full bg-black text-white dark:bg-white dark:text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-xl">
-              Stack
-            </button>
-            <button className="w-full md:w-auto px-12 py-4 rounded-full border border-black/10 dark:border-white/20 bg-black/5 dark:bg-white/5 text-black dark:text-white text-[10px] font-black uppercase tracking-widest hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300">
-              Services
-            </button>
-          </div>
+  {/* Stack Button */}
+  <a 
+    href="#stack"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('stack')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+    className="w-full md:w-auto px-12 py-4 rounded-full bg-black text-white dark:bg-white dark:text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all duration-300 shadow-xl text-center cursor-pointer"
+  >
+    Stack_
+  </a>
+
+  {/* Services Button */}
+  <a 
+    href="#services"
+    onClick={(e) => {
+      e.preventDefault();
+      document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+    }}
+    className="w-full md:w-auto px-12 py-4 rounded-full border border-black/10 dark:border-white/20 bg-black/5 dark:bg-white/5 text-black dark:text-white text-[10px] font-black uppercase tracking-widest hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 text-center cursor-pointer"
+  >
+    Services_
+  </a>
+</div>
         </div>
 
         {/* 6. Geometric Accents (Adaptive Borders) */}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 export default function SystemFooter() {
@@ -28,7 +28,7 @@ export default function SystemFooter() {
           </div>
           
           <motion.a 
-            href="mailto:your@email.com"
+            href="https://cal.com/xenon-hquxnj/15min"
             whileHover={{ scale: 1.05 }}
             className="px-12 py-6 bg-black dark:bg-white text-white dark:text-black rounded-full font-black uppercase tracking-widest text-[10px] shadow-2xl"
           >
@@ -51,9 +51,9 @@ export default function SystemFooter() {
           <div className="space-y-6">
             <h4 className="text-blue-500 font-mono text-[10px] uppercase tracking-widest font-black">Network</h4>
             <ul className="space-y-3 text-[10px] font-mono text-zinc-500 uppercase tracking-tighter">
-              <li><a href="#" className="hover:text-black dark:hover:text-white transition-colors">GitHub_Repo</a></li>
-              <li><a href="#" className="hover:text-black dark:hover:text-white transition-colors">LinkedIn_Profile</a></li>
-              <li><a href="#" className="hover:text-black dark:hover:text-white transition-colors">Twitter_X</a></li>
+              <li><a href="https://github.com/iamxenon404" className="hover:text-black dark:hover:text-white transition-colors">GitHub_Repo</a></li>
+              {/* <li><a href="https://www.linkedin.com/in/xenon-coder-35904935b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="hover:text-black dark:hover:text-white transition-colors">LinkedIn_Profile</a></li> */}
+              <li><a href="https://x.com/iamxenon404" className="hover:text-black dark:hover:text-white transition-colors">Twitter_X</a></li>
             </ul>
           </div>
 

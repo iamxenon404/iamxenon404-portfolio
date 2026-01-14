@@ -4,9 +4,9 @@ import type { Variants } from 'framer-motion';
 import { Github, Phone, Zap, X, ChevronUp, ChevronDown } from 'lucide-react';
 
 const navLinks = [
-  { name: 'Projects', href: '#projects' },
-  { name: 'Stack', href: '#stack' },
-  { name: 'Experience', href: '#experience' },
+  { name: 'Modules_', href: '#services' },
+  { name: 'Tech_Stack', href: '#stack' },
+  { name: 'Kernel_ID', href: '#about' },
 ];
 
 export default function Header() {
@@ -22,7 +22,14 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Added 'as const' and explicit Variants type to solve the TS2322 error
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    const targetId = href.replace('#', '');
+    const elem = document.getElementById(targetId);
+    elem?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const headerVariants: Variants = {
     topInitial: { y: -100, opacity: 0 },
     topAnimate: { 
@@ -59,7 +66,7 @@ export default function Header() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: scrolled ? 10 : -10 }}
             className={`pointer-events-auto w-full max-w-sm backdrop-blur-2xl border shadow-2xl z-90 
-              bg-(--glass-bg) border-(--glass-border)
+              bg-(--glass-bg) border-blue-500/20
               ${scrolled ? 'mb-4 rounded-4xl absolute bottom-24' : 'mt-4 rounded-4xl absolute top-20'}`}
           >
             <div className="flex flex-col gap-1 p-2">
@@ -67,17 +74,17 @@ export default function Header() {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="px-6 py-4 text-xs font-bold tracking-[0.2em] uppercase transition-all rounded-2xl
-                    text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="px-6 py-4 text-[10px] font-mono font-bold tracking-[0.2em] uppercase transition-all rounded-2xl
+                    text-black dark:text-white hover:bg-blue-500/10 hover:text-blue-500"
                 >
-                  {link.name}
+                  {'>'} {link.name}
                 </a>
               ))}
               <div className="h-px my-2 mx-4 bg-black/10 dark:bg-white/10" />
               <div className="flex justify-around py-2">
-                <Github size={20} className="text-black dark:text-zinc-400 dark:hover:text-white cursor-pointer" />
-                <Phone size={20} className="text-black dark:text-zinc-400 dark:hover:text-white cursor-pointer" />
+                <Github size={20} className="text-black dark:text-zinc-400 dark:hover:text-blue-500 cursor-pointer transition-colors" />
+                <Phone size={20} className="text-black dark:text-zinc-400 dark:hover:text-blue-500 cursor-pointer transition-colors" />
               </div>
             </div>
           </motion.div>
@@ -100,13 +107,14 @@ export default function Header() {
             
             <LogoSection />
 
-            <nav className="hidden md:flex items-center gap-2 z-10">
+            <nav className="hidden md:flex items-center gap-2 z-10 font-mono">
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className="relative px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-all group whitespace-nowrap
-                    text-black dark:text-zinc-300 dark:hover:text-white"
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="relative px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all group whitespace-nowrap
+                    text-black dark:text-zinc-300 dark:hover:text-blue-500"
                 >
                   {link.name}
                   <span className="absolute inset-x-2 -bottom-1 h-0.5 bg-linear-to-r from-transparent via-black/40 dark:via-white/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
@@ -133,22 +141,24 @@ export default function Header() {
             animate="bottomAnimate"
             exit="bottomExit"
             className="pointer-events-auto relative mt-auto flex w-full max-w-lg md:max-w-2xl items-center justify-between backdrop-blur-3xl border shadow-2xl px-6 py-3 md:py-4 overflow-visible rounded-full
-              bg-(--glass-bg) border-(--glass-border)"
+              bg-(--glass-bg) border-blue-500/20"
           >
             <div className="absolute inset-0 bg-linear-to-tr from-white/10 via-transparent to-white/5 pointer-events-none rounded-full" />
             
             <LogoSection />
 
-            <nav className="hidden md:flex items-center gap-2 z-10">
+            <nav className="hidden md:flex items-center gap-2 z-10 font-mono">
               {navLinks.map((link) => (
                 <a 
                   key={link.name} 
                   href={link.href} 
-                  className="relative px-4 py-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-all group whitespace-nowrap
-                    text-black dark:text-zinc-300 dark:hover:text-white"
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="relative px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] transition-all group whitespace-nowrap
+                    text-black dark:text-zinc-300 dark:hover:text-blue-500"
                 >
                   {link.name}
                   <span className="absolute inset-x-2 -bottom-1 h-0.5 bg-linear-to-r from-transparent via-black/40 dark:via-white/60 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+
                 </a>
               ))}
             </nav>
@@ -171,20 +181,33 @@ export default function Header() {
 }
 
 const LogoSection = () => {
+  // Smooth scroll to top function
+  const scrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
-    <div className="flex items-center gap-2.5 z-10 shrink-0 cursor-default">
+    <a 
+      href="#hero" 
+      onClick={scrollToTop}
+      className="flex items-center gap-2.5 z-10 shrink-0 cursor-pointer group"
+    >
       <motion.div 
-        animate={{ y: [0, -4, 0] }}
-        transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-        className="w-7 h-7 rounded-lg flex items-center justify-center shadow-lg
-          bg-black text-white dark:bg-white dark:text-black"
+        animate={{ rotate: [0, 360] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        className="w-7 h-7 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.5)]
+          bg-black text-blue-500 dark:bg-blue-500 dark:text-black group-hover:shadow-blue-500/80 transition-shadow"
       >
         <Zap size={14} className="fill-current" />
       </motion.div>
 
       <div className="relative">
         <span className="font-black tracking-tighter text-base uppercase bg-clip-text text-transparent bg-shimmer-silver animate-silver-slide">
-          Xenon
+          Xenon_Sys
         </span>
       </div>
 
@@ -206,16 +229,15 @@ const LogoSection = () => {
           animation: silver-slide 2.5s infinite linear;
         }
       `}</style>
-    </div>
+    </a>
   );
 };
-
 const ActionIcons = ({ className = "" }) => (
   <div className={`items-center gap-2 z-10 shrink-0 ${className}`}>
-    <a href="#" className="p-2.5 text-black dark:text-zinc-400 dark:hover:text-white rounded-full transition-all hover:bg-black/5 dark:hover:bg-white/10">
+    <a href="https://github.com/iamxenon404" className="p-2.5 text-black dark:text-zinc-400 dark:hover:text-blue-500 rounded-full transition-all hover:bg-black/5 dark:hover:bg-white/10">
       <Github size={20} />
     </a>
-    <a href="#" className="p-2.5 text-black dark:text-zinc-400 dark:hover:text-white rounded-full transition-all border border-transparent hover:border-black/10 dark:hover:border-white/10 hover:bg-black/5 dark:hover:bg-white/10">
+    <a href="https://cal.com/xenon-hquxnj/15min" className="p-2.5 text-black dark:text-zinc-400 dark:hover:text-blue-500 rounded-full transition-all border border-transparent hover:border-black/10 dark:hover:border-white/10 hover:bg-black/5 dark:hover:bg-white/10">
       <Phone size={20} />
     </a>
   </div>

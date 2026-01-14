@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { stackData, allProjects } from '../../types/data';
 import type { Project } from '../../types/data';
@@ -32,7 +32,7 @@ export default function Stack() {
   };
 
   return (
-    <section className="w-full py-24 px-6 md:px-20 bg-(--bg-color) transition-colors duration-500 min-h-[800px] relative overflow-x-hidden">
+    <section className="w-full py-24 px-6 md:px-20 bg-(--bg-color) transition-colors duration-500 min-h-200 relative overflow-x-hidden" id='stack'>
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -112,15 +112,15 @@ export default function Stack() {
                 className="grid grid-cols-1 md:grid-cols-12 gap-6"
               >
                 {/* 1. THE COMMAND CENTER (Hero) */}
-                <div className="md:col-span-8 rounded-[2.5rem] md:rounded-[3rem] border border-(--glass-border) bg-(--glass-bg) backdrop-blur-3xl p-6 md:p-12 flex flex-col justify-between relative overflow-hidden group min-h-[450px] md:min-h-[500px] shadow-2xl shadow-blue-500/5">
+                <div className="md:col-span-8 rounded-[2.5rem] md:rounded-[3rem] border border-(--glass-border) bg-(--glass-bg) backdrop-blur-3xl p-6 md:p-12 flex flex-col justify-between relative overflow-hidden group min-h-112.5 md:min-h-125 shadow-2xl shadow-blue-500/5">
                   <div className={`absolute -top-24 -left-24 w-96 h-96 blur-[120px] opacity-30 dark:opacity-20 ${stackData[activeId].color} animate-pulse`} />
                   
                   <div className="relative z-10">
                     <div className="flex items-center gap-4 mb-8 md:mb-12">
                       <span className="text-5xl md:text-7xl drop-shadow-2xl">{stackData[activeId].icon}</span>
-                      <div className="h-[1px] flex-1 bg-gradient-to-r from-blue-500/40 via-blue-500/10 to-transparent" />
+                      <div className="h-px flex-1 bg-linear-to-r from-blue-500/40 via-blue-500/10 to-transparent" />
                     </div>
-                    <h4 className="text-4xl sm:text-5xl md:text-7xl font-black text-(--text-color) uppercase tracking-tighter leading-[0.9] mb-6 break-words">
+                    <h4 className="text-4xl sm:text-5xl md:text-7xl font-black text-(--text-color) uppercase tracking-tighter leading-[0.9] mb-6  wrap-break-word">
                       {stackData[activeId].name}
                     </h4>
                     <div className="inline-flex items-center gap-3 px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-blue-500/20 bg-blue-500/10 dark:bg-blue-500/5">
@@ -180,7 +180,7 @@ export default function Stack() {
                         <motion.div
                           key={tech}
                           whileHover={{ scale: 0.98, borderColor: "rgba(59, 130, 246, 0.5)" }}
-                          className={`relative group overflow-hidden rounded-[1.8rem] md:rounded-[2rem] border border-(--glass-border) bg-white/40 dark:bg-black/20 p-5 md:p-6 flex flex-col justify-between transition-all ${isWide ? 'col-span-2' : 'col-span-1'}`}
+                          className={`relative group overflow-hidden rounded-[1.8rem] md:rounded-4xl border border-(--glass-border) bg-white/40 dark:bg-black/20 p-5 md:p-6 flex flex-col justify-between transition-all ${isWide ? 'col-span-2' : 'col-span-1'}`}
                         >
                           <div className={`absolute inset-0 opacity-0 group-hover:opacity-25 dark:group-hover:opacity-10 transition-opacity duration-500 ${stackData[activeId].color} blur-2xl`} />
                           <span className="text-[8px] text-zinc-500 dark:text-zinc-600 font-mono relative z-10">MOD_0{i}</span>
@@ -194,13 +194,13 @@ export default function Stack() {
                 </div>
 
                 {/* 3. MAIN STATUS FOOTER */}
-                <div className="md:col-span-12 min-h-[100px] md:h-28 rounded-[2rem] md:rounded-[2.5rem] border border-(--glass-border) bg-(--glass-bg) backdrop-blur-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-12 overflow-hidden relative shadow-xl shadow-blue-500/5">
-                  <div className="flex flex-col gap-2 w-full md:min-w-[200px] relative z-10">
+                <div className="md:col-span-12 min-h-25 md:h-28 rounded-4xl md:rounded-[2.5rem] border border-(--glass-border) bg-(--glass-bg) backdrop-blur-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-12 overflow-hidden relative shadow-xl shadow-blue-500/5">
+                  <div className="flex flex-col gap-2 w-full md:min-w-50 relative z-10">
                     <div className="flex justify-between text-[8px] font-black uppercase text-zinc-500 tracking-[0.2em]">
                       <span>Sync_Progress</span>
                       <span className="text-blue-600 dark:text-blue-500 animate-pulse font-mono">Running...</span>
                     </div>
-                    <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-800/50 rounded-full overflow-hidden p-[1px]">
+                    <div className="h-2 w-full bg-zinc-200 dark:bg-zinc-800/50 rounded-full overflow-hidden p-px">
                       <motion.div 
                         initial={{ width: "0%" }}
                         animate={{ width: "100%" }}
@@ -212,8 +212,8 @@ export default function Stack() {
                   <div className="flex-1 grid grid-cols-4 gap-4 opacity-30 relative z-10 hidden md:grid">
                     {[...Array(4)].map((_, i) => (
                       <div key={i} className="flex flex-col gap-1.5">
-                        <div className="h-[2px] w-full bg-zinc-300 dark:bg-zinc-700" />
-                        <div className="h-[2px] w-[60%] bg-zinc-200 dark:bg-zinc-800" />
+                        <div className="h-0.5 w-full bg-zinc-300 dark:bg-zinc-700" />
+                        <div className="h-0.5 w-[60%] bg-zinc-200 dark:bg-zinc-800" />
                       </div>
                     ))}
                   </div>
@@ -227,7 +227,7 @@ export default function Stack() {
                    <h5 className="text-black dark:text-white font-black uppercase tracking-tighter text-4xl">Selected_Works</h5>                   
                     </div>
                     <div className="flex gap-4 items-center">
-                       <div className="w-12 h-[1px] bg-white/10" />
+                       <div className="w-12 h-px bg-white/10" />
                        <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest leading-none italic">Auto_Scroll_Enabled</span>
                     </div>
                   </div>
@@ -255,13 +255,13 @@ export default function Stack() {
                           onClick={() => setSelectedProject(project)}
                           className="relative group cursor-pointer"
                         >
-                          <div className="w-[360px] md:w-[520px] aspect-video rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950/50 relative">
+                          <div className="w-90 md:w-130 aspect-video rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950/50 relative">
                             <img 
                               src={project.image} 
                               alt={project.title} 
                               className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-90" />
+                            <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-transparent to-transparent opacity-90" />
                             <div className="absolute inset-0 p-10 flex flex-col justify-end">
                               <div className="space-y-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                 <span className="text-blue-500/0 group-hover:text-blue-500 font-mono text-[9px] uppercase tracking-widest transition-colors">
@@ -291,7 +291,7 @@ export default function Stack() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 // FIX: backdrop-blur overlay now allows scrolling if content is taller than screen
-                className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 backdrop-blur-3xl bg-black/80 overflow-y-auto"
+                className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-10 backdrop-blur-3xl bg-black/80 overflow-y-auto"
                 onClick={() => setSelectedProject(null)}
               >
                 <motion.div
@@ -300,9 +300,9 @@ export default function Stack() {
                   exit={{ scale: 0.9, y: 30, opacity: 0 }}
                   onClick={(e) => e.stopPropagation()}
                   // FIX: Changed max-h to screen-relative and enabled scrolling for content
-                  className="w-full max-w-7xl h-fit max-h-[90vh] overflow-y-auto no-scrollbar rounded-[2rem] border border-white/10 bg-zinc-950 shadow-[0_0_100px_rgba(0,0,0,1)] relative p-1"
+                  className="w-full max-w-7xl h-fit max-h-[90vh] overflow-y-auto no-scrollbar rounded-4xl border border-white/10 bg-zinc-950 shadow-[0_0_100px_rgba(0,0,0,1)] relative p-1"
                 >
-                  <div className="absolute inset-0 rounded-[2rem] border border-blue-500/20 pointer-events-none" />
+                  <div className="absolute inset-0 rounded-4xl border border-blue-500/20 pointer-events-none" />
 
                   <div className="bg-zinc-900/50 rounded-[1.9rem] p-6 md:p-10 relative overflow-hidden">
                     {/* HEADER SECTION */}
@@ -336,7 +336,7 @@ export default function Stack() {
                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" 
                             alt={selectedProject.title} 
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent z-10" />
+                          <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-transparent to-transparent z-10" />
                           <div className="absolute top-6 left-6 z-30 flex gap-2">
                             <div className="px-3 py-1 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 rounded-full text-[8px] font-black text-blue-400 uppercase tracking-widest">
                               Encrypted_Stream
@@ -349,14 +349,14 @@ export default function Stack() {
 
                         {/* TERMINAL BOX */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="p-8 rounded-[2rem] bg-black/40 border border-white/5 font-mono text-sm leading-relaxed">
+                          <div className="p-8 rounded-4xl bg-black/40 border border-white/5 font-mono text-sm leading-relaxed">
                              <p className="text-blue-500/60 text-[9px] font-black uppercase tracking-widest mb-4">Description_Module</p>
                              <p className="text-zinc-300">
                               {selectedProject.description}
                              </p>
                           </div>
                           
-                          <div className="p-8 rounded-[2rem] bg-zinc-950 border border-white/5 font-mono relative overflow-hidden">
+                          <div className="p-8 rounded-4xl bg-zinc-950 border border-white/5 font-mono relative overflow-hidden">
                              <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-4">Console_Logs</p>
                              <div className="space-y-1 text-[10px]">
                                 <p className="text-emerald-500/80">&gt; Initializing build process...</p>
@@ -375,7 +375,7 @@ export default function Stack() {
 
                       {/* 2. SPECIFICATION MATRIX (4/12) */}
                       <div className="md:col-span-4 space-y-6">
-                        <div className="rounded-[2.5rem] border border-blue-500/10 bg-gradient-to-br from-blue-500/5 to-transparent p-8">
+                        <div className="rounded-[2.5rem] border border-blue-500/10 bg-linear-to-br from-blue-500/5 to-transparent p-8">
                           <div className="flex justify-between items-center mb-10">
                             <h4 className="text-white text-xs font-black uppercase tracking-[0.3em]">Core_Tech</h4>
                             <div className="px-2 py-0.5 rounded bg-blue-500 text-[8px] font-black text-white">001</div>
@@ -390,7 +390,7 @@ export default function Stack() {
                                     {t}
                                   </span>
                                 </div>
-                                <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden p-[1px]">
+                                <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden p-1px">
                                    <motion.div 
                                     initial={{ width: 0 }}
                                     animate={{ width: "100%" }}

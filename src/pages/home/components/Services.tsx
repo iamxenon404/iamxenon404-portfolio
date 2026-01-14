@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const services = [
@@ -35,7 +35,7 @@ export default function ServicesBento() {
   };
 
   return (
-    <section className="w-full py-32 px-6 md:px-20 bg-(--bg-color) overflow-hidden">
+    <section className="w-full py-32 px-6 md:px-20 bg-(--bg-color) overflow-hidden" id='services'>
       <div className="max-w-7xl mx-auto">
         
         {/* DEV SYSTEM HEADER */}
@@ -67,7 +67,7 @@ export default function ServicesBento() {
                 transition={{
                   layout: { duration: 0.6, type: "spring", stiffness: 160, damping: 22 },
                 }}
-                className={`relative group rounded-[2rem] border border-(--glass-border) bg-(--glass-bg) p-8 md:p-10 flex flex-col justify-between ${getSpan(service, isActive)} ${isActive ? 'z-20 min-h-fit ring-2 ring-blue-500/20' : 'z-10'} cursor-pointer transition-shadow hover:shadow-xl overflow-hidden`}
+                className={`relative group rounded-4xl border border-(--glass-border) bg-(--glass-bg) p-8 md:p-10 flex flex-col justify-between ${getSpan(service, isActive)} ${isActive ? 'z-20 min-h-fit ring-2 ring-blue-500/20' : 'z-10'} cursor-pointer transition-shadow hover:shadow-xl overflow-hidden`}
               >
                 {/* BIG CENTERED WATERMARK */}
                 {!isActive && (
@@ -82,12 +82,12 @@ export default function ServicesBento() {
                     initial={{ top: "-100%" }}
                     animate={{ top: "100%" }}
                     transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-                    className="absolute inset-x-0 h-20 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent z-0 pointer-events-none"
+                    className="absolute inset-x-0 h-20 bg-linear-to-b from-transparent via-blue-500/5 to-transparent z-0 pointer-events-none"
                   />
                 )}
 
                 {isActive && (
-                  <motion.div layoutId="activeGlow" className={`absolute inset-0 bg-gradient-to-br ${service.color} to-transparent opacity-40 z-0`} />
+                  <motion.div layoutId="activeGlow" className={`absolute inset-0 bg-linear-to-br ${service.color} to-transparent opacity-40 z-0`} />
                 )}
 
                 <div className="relative z-10 w-full">
