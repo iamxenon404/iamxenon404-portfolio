@@ -209,7 +209,7 @@ export default function Stack() {
                       />
                     </div>
                   </div>
-                  <div className="flex-1 grid grid-cols-4 gap-4 opacity-30 relative z-10 hidden md:grid">
+                  <div className="flex-1 grid grid-cols-4 gap-4 opacity-30 relative z-10  md:grid">
                     {[...Array(4)].map((_, i) => (
                       <div key={i} className="flex flex-col gap-1.5">
                         <div className="h-0.5 w-full bg-zinc-300 dark:bg-zinc-700" />
@@ -330,7 +330,8 @@ export default function Stack() {
                       {/* 1. VISUAL INTERFACE (8/12) */}
                       <div className="md:col-span-8 space-y-6">
                         <div className="relative group aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 bg-black">
-                          <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_2px,3px_100%]" />
+                          <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
+                          
                           <img 
                             src={selectedProject.image} 
                             className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" 

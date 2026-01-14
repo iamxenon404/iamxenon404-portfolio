@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import Hero from './components/Hero'
 import Stack from './components/Stack'
 import Services from './components/Services'

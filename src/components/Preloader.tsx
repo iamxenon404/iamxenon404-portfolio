@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Preloader() {
@@ -27,7 +27,7 @@ export default function Preloader() {
         <motion.div
           exit={{ opacity: 0, filter: "blur(40px)", scale: 1.05 }}
           transition={{ duration: 0.9, ease: [0.7, 0, 0.3, 1] }}
-          className="fixed inset-0 z-[1000] flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden"
+          className="fixed inset-0 z-1000 flex flex-col items-center justify-center bg-[#0a0a0a] overflow-hidden"
         >
           {/* GIANT GHOST BACKDROP */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
@@ -38,7 +38,7 @@ export default function Preloader() {
               className="relative flex items-center justify-center"
             >
               <h1 
-                className="text-[25vw] font-black uppercase tracking-tighter text-transparent bg-clip-text bg-shimmer-silver animate-silver-slide whitespace-nowrap opacity-[0.07] blur-[8px]"
+                className="text-[25vw] font-black uppercase tracking-tighter text-transparent bg-clip-text bg-shimmer-silver animate-silver-slide whitespace-nowrap opacity-[0.07] blur-sm"
                 style={{ WebkitTextStroke: "1px rgba(255,255,255,0.1)" }}
               >
                 {text}
@@ -82,7 +82,7 @@ export default function Preloader() {
                 </span>
               </div>
               
-              <div className="w-full h-[2px] bg-white/5 relative rounded-full overflow-hidden">
+              <div className="w-full h-0.5 bg-white/5 relative rounded-full overflow-hidden">
                 <motion.div 
                   initial={{ width: 0 }}
                   animate={{ width: `${progress}%` }}
