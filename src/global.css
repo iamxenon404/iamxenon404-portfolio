@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "SF Pro Display", system-ui, sans-serif;
+  /* Add these for easier component use */
+  --color-glass-surface: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+}
+
+:root {
+  --bg-color: #050505;
+  --text-color: #ffffff;
+  --mesh-top: #1a1a1a;
+  --mesh-bottom: #0a0a0a;
+  /* Header specific glass */
+  --glass-bg: rgba(0, 0, 0, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #f4f4f5; /* Zinc-100 */
+    --text-color: #09090b; /* Zinc-950 */
+    --mesh-top: #e4e4e7; /* Zinc-200 */
+    --mesh-bottom: #ffffff;
+    /* Header specific glass - Zinc/Silver feel */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(0, 0, 0, 0.08);
+    color-scheme: light;
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background-image: 
+    radial-gradient(circle at 50% -20%, var(--mesh-top) 0%, transparent 50%),
+    radial-gradient(circle at 0% 100%, var(--mesh-bottom) 0%, transparent 40%);
+  background-attachment: fixed;
+  transition: background-color 0.5s ease;
+  margin: 0;
+  min-height: 100vh;
+}
