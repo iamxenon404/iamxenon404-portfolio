@@ -219,66 +219,95 @@ export default function Stack() {
                   </div>
                 </div>
 
-                {/* LEVEL 2.5: THE 3D PROJECT MARQUEE */}
-                <div className="md:col-span-12 mt-20 relative">
-                  <div className="flex justify-between items-end mb-12 px-4">
-                    <div className="space-y-1">
-                      <p className="text-blue-500 font-mono text-[10px] tracking-[0.5em] uppercase font-black">Archive_Index</p>
-                   <h5 className="text-black dark:text-white font-black uppercase tracking-tighter text-4xl">Selected_Works</h5>                   
-                    </div>
-                    <div className="flex gap-4 items-center">
-                       <div className="w-12 h-px bg-white/10" />
-                       <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest leading-none italic">Auto_Scroll_Enabled</span>
-                    </div>
-                  </div>
+{/* LEVEL 2.5: THE 3D PROJECT MARQUEE */}
+<div className="md:col-span-12 mt-20 relative">
+  <div className="flex justify-between items-end mb-12 px-4">
+    <div className="space-y-1">
+      <p className="text-blue-500 font-mono text-[10px] tracking-[0.5em] uppercase font-black">Archive_Index</p>
+      <h5 className="text-black dark:text-white font-black uppercase tracking-tighter text-4xl">Selected_Works</h5>   
+    </div>
+    <div className="flex gap-4 items-center">
+       <div className="w-12 h-px bg-white/10" />
+       <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest leading-none italic">
+         Filtering_By: {activeId || 'ALL'}
+       </span>
+    </div>
+  </div>
 
-                  <div 
-                    className="relative w-full overflow-hidden"
-                    style={{
-                      maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
-                      WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
-                    }}
-                  >
-                    <motion.div 
-                      className="flex gap-12 w-max py-10"
-                      animate={{ x: ["0%", "-50%"] }}
-                      transition={{
-                        duration: 15,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                    >
-                      {[...allProjects.filter(p => p.categoryIds.includes(activeId!)), ...allProjects.filter(p => p.categoryIds.includes(activeId!))].map((project, idx) => (
-                        <motion.div
-                          key={`${project.id}-${idx}`}
-                          whileHover={{ y: -15 }}
-                          onClick={() => setSelectedProject(project)}
-                          className="relative group cursor-pointer"
-                        >
-                          <div className="w-90 md:w-130 aspect-video rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950/50 relative">
-                            <img 
-                              src={project.image} 
-                              alt={project.title} 
-                              className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700"
-                            />
-                            <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-transparent to-transparent opacity-90" />
-                            <div className="absolute inset-0 p-10 flex flex-col justify-end">
-                              <div className="space-y-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                <span className="text-blue-500/0 group-hover:text-blue-500 font-mono text-[9px] uppercase tracking-widest transition-colors">
-                                  Project_0{idx + 1}
-                                </span>
-                                <h6 className="text-white font-black uppercase tracking-tighter text-4xl leading-none">
-                                  {project.title}
-                                </h6>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  </div>
+  <div 
+    className="relative w-full overflow-hidden"
+    style={{
+      maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)',
+      WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)'
+    }}
+  >
+    <motion.div 
+      className="flex gap-12 w-max py-10"
+      animate={{ x: ["0%", "-50%"] }}
+      transition={{
+        duration: 20, // Adjust speed as needed
+        repeat: Infinity,
+        ease: "linear",
+      }}
+    >
+      {(() => {
+        // 1. Filter projects that include the active programming language ID
+        const filteredProjects = allProjects.filter(p => 
+          activeId ? p.categoryIds.includes(activeId) : true
+        );
+
+        // 2. Safeguard: If no projects match, display a clean fallback notice container
+        if (filteredProjects.length === 0) {
+          return (
+            <div className="w-full text-center py-10 font-mono text-zinc-500 text-sm tracking-wider">
+              [ NO_PROJECTS_DEPLOYED_FOR_THIS_STACK ]
+            </div>
+          );
+        }
+
+        // 3. Carousel Duplication Engine: Ensure there are enough cards to make the infinite scroll smooth
+        let marqueeItems = [...filteredProjects];
+        while (marqueeItems.length < 6) {
+          marqueeItems = [...marqueeItems, ...filteredProjects];
+        }
+
+        // 4. Render the items
+        return marqueeItems.map((project, idx) => (
+          <motion.div
+            key={`${project.id}-${idx}`}
+            whileHover={{ y: -15 }}
+            onClick={() => setSelectedProject && setSelectedProject(project)}
+            className="relative group cursor-pointer"
+          >
+            <div className="w-[360px] md:w-[520px] aspect-video rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950/50 relative">
+              <img 
+                src={project.image} 
+                alt={project.title} 
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-90" />
+              
+              <div className="absolute inset-0 p-10 flex flex-col justify-end">
+                <div className="space-y-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <span className="opacity-0 group-hover:opacity-100 text-blue-500 font-mono text-[9px] uppercase tracking-widest transition-opacity duration-300">
+                    System_Build_0{ (idx % filteredProjects.length) + 1 }
+                  </span>
+                  <h6 className="text-white font-black uppercase tracking-tighter text-2xl md:text-3xl leading-none">
+                    {project.title}
+                  </h6>
+                  <p className="text-zinc-400 text-xs font-mono opacity-0 group-hover:opacity-100 line-clamp-1 transition-all duration-500 delay-200">
+                    {project.tech.join(" // ")}
+                  </p>
                 </div>
+              </div>
+            </div>
+            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-3/4 h-1 bg-blue-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
+        ));
+      })()}
+    </motion.div>
+  </div>
+</div>
               </motion.div>
             )}
           </AnimatePresence>
