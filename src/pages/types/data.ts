@@ -72,7 +72,7 @@ export const allProjects: Project[] = [
     stars: '22'
   },
   {
-    id: 'perfume-reselling',
+    id: 'E-commerce-Redistribution',
     title: 'ScentXchange Market',
     description: 'E-commerce redistribution matrix featuring secure payload transactional data flows, stateful search matrices, and real-time ledger tracking.',
     image: '/assets/Demmiz.png',
