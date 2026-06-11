@@ -20,40 +20,65 @@ export interface StackCategory {
   subStack: string[];
 }
 
-// 1. MASTER PROJECT LIST (Centralized)
-// Using a single high-tech abstract image for the "Coming Soon" phase
-const LOCKED_IMAGE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop";
+// 1. MASTER PROJECT LIST
+// Standard high-tech abstract asset placeholder for deployed live system frames
+const DEPLOYED_IMAGE = "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070&auto=format&fit=crop";
 
 export const allProjects: Project[] = [
   {
-    id: 'p1',
-    title: '[ CLASSIFIED_01 ]',
-    description: 'System architecture in progress. Full stack deployment pending final encryption protocols.',
-    image: LOCKED_IMAGE, 
-    github: '#',
+    id: 'webhook-tester',
+    title: 'Webhook Tester Platform',
+    description: 'Real-time HTTP payload listener and telemetry dashboard built to capture, inspect, and debug asynchronous server events.',
+    image: DEPLOYED_IMAGE, 
+    github: 'https://github.com/your-username/webhook-tester', // Replace with your actual repo link
+    link: 'https://webhook-tester.yourdomain.com',               // Replace or remove if not live
+    categoryIds: ['JS'],
+    tech: ['Next.js', 'Express', 'TypeScript', 'Tailwind CSS'],
+    stars: '14'
+  },
+  {
+    id: 'school-ecosystem',
+    title: 'School Ecosystem Core',
+    description: 'Multi-tiered institutional architecture syncing cross-platform mobile portals with a complex relational database management panel.',
+    image: DEPLOYED_IMAGE,
+    github: 'https://github.com/your-username/school-ecosystem',
+    link: 'https://school.yourdomain.com',
+    categoryIds: ['FL', 'JS', 'PY', 'DB'],
+    tech: ['Flutter', 'React', 'Django', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
+    stars: '38'
+  },
+  {
+    id: 'meetminds',
+    title: 'MeetMinds Platform',
+    description: 'High-performance interactive landing portal engineered with optimized component rendering and fluid responsive layout interfaces.',
+    image: DEPLOYED_IMAGE,
+    github: 'https://github.com/your-username/meetminds',
+    link: 'https://meetminds.yourdomain.com',
+    categoryIds: ['JS'],
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
+    stars: '09'
+  },
+  {
+    id: 'restaurant-webapp',
+    title: 'Culinary Engine Engine',
+    description: 'Full-stack commercial restaurant management suite integrating relational schema mapping, stateful shopping flows, and administrative metrics.',
+    image: DEPLOYED_IMAGE,
+    github: 'https://github.com/your-username/restaurant-app',
+    link: 'https://restaurant.yourdomain.com',
     categoryIds: ['JS', 'DB'],
-    tech: ['React', 'TS', 'Node'],
-    stars: '---'
+    tech: ['Next.js', 'NestJS', 'Prisma', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
+    stars: '22'
   },
   {
-    id: 'p2',
-    title: '[ CLASSIFIED_02 ]',
-    description: 'Python-based data processing engine. Awaiting kernel synchronization and API clearance.',
-    image: LOCKED_IMAGE,
-    github: '#',
-    categoryIds: ['PY'],
-    tech: ['Python', 'FastAPI'],
-    stars: '---'
-  },
-  {
-    id: 'p3',
-    title: '[ CLASSIFIED_03 ]',
-    description: 'Cross-platform mobile interface. UI/UX modules currently in stealth mode development.',
-    image: LOCKED_IMAGE,
-    github: '#',
-    categoryIds: ['FL'],
-    tech: ['Flutter', 'Dart'],
-    stars: '---'
+    id: 'perfume-reselling',
+    title: 'ScentXchange Market',
+    description: 'E-commerce redistribution matrix featuring secure payload transactional data flows, stateful search matrices, and real-time ledger tracking.',
+    image: DEPLOYED_IMAGE,
+    github: 'https://github.com/your-username/perfume-resell',
+    link: 'https://scentxchange.yourdomain.com',
+    categoryIds: ['JS', 'DB'],
+    tech: ['Next.js', 'NestJS', 'Prisma', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
+    stars: '19'
   }
 ];
 
@@ -66,7 +91,7 @@ export const stackData: Record<string, StackCategory> = {
     category: 'Fullstack Web',
     color: 'bg-yellow-500/10',
     stability: '98.4%',
-    subStack: ["React", "Next.js", "Node.js", "Express", "TypeScript", "Tailwind CSS", "Redux", "Framer Motion"]
+    subStack: ["React", "Next.js", "Node.js", "Express", "NestJS", "TypeScript", "Tailwind CSS", "Redux", "Framer Motion"]
   },
   PY: {
     id: 'PY',
