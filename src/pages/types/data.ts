@@ -27,7 +27,7 @@ const DEPLOYED_IMAGE = "https://images.unsplash.com/photo-1677442136019-21780eca
 
 export const allProjects: Project[] = [
   {
-    id: 'webhook-tester',
+    id: 'Xenlog404',
     title: 'Webhook Tester Platform',
     description: 'Real-time HTTP payload listener and telemetry dashboard built to capture, inspect, and debug asynchronous server events.',
     image: '/assets/Xenlog.png', // Replace with actual image path
