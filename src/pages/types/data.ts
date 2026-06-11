@@ -73,7 +73,7 @@ export const allProjects: Project[] = [
   },
   {
     id: 'E-commerce-Redistribution',
-    title: 'ScentXchange Market',
+    title: 'Demmiz Scenthub ',
     description: 'E-commerce redistribution matrix featuring secure payload transactional data flows, stateful search matrices, and real-time ledger tracking.',
     image: '/assets/Demmiz.png',
     lightImage: '/assets/Demmiz-light.png',
