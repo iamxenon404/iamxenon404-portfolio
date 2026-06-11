@@ -29,7 +29,7 @@ export const allProjects: Project[] = [
     id: 'webhook-tester',
     title: 'Webhook Tester Platform',
     description: 'Real-time HTTP payload listener and telemetry dashboard built to capture, inspect, and debug asynchronous server events.',
-    image: DEPLOYED_IMAGE, 
+    image: '/assets/Xenlog.png', // Replace with actual image path
     github: 'https://github.com/your-username/webhook-tester', // Replace with your actual repo link
     link: 'https://webhook-tester.yourdomain.com',               // Replace or remove if not live
     categoryIds: ['JS'],
