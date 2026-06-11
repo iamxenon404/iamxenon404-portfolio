@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
+  lightImage?: string; // Optional field for light mode image
   github: string;
   link?: string;
   categoryIds: string[]; // Maps to the keys in stackData (e.g., ['JS', 'PY'])
