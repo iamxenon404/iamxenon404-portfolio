@@ -280,11 +280,19 @@ export default function Stack() {
             className="relative group cursor-pointer"
           >
             <div className="w-[360px] md:w-[520px] aspect-video rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950/50 relative">
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700"
-              />
+{/* Light Mode Image: Hidden by default, block when theme is light, hidden again in Tailwind dark mode */}
+<img 
+  src={project.lightImage || project.image} 
+  alt={project.title} 
+  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700 dark:hidden"
+/>
+
+{/* Dark Mode Image: Hidden by default, block only when Tailwind detects dark mode */}
+<img 
+  src={project.image} 
+  alt={project.title} 
+  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-all duration-700 hidden dark:block"
+/>
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-90" />
               
               <div className="absolute inset-0 p-10 flex flex-col justify-end">
