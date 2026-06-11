@@ -320,155 +320,160 @@ export default function Stack() {
             )}
           </AnimatePresence>
 
-          {/* LEVEL 3: PROJECT DEEP DIVE OVERLAY */}
-          <AnimatePresence>
-            {selectedProject && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                // FIX: backdrop-blur overlay now allows scrolling if content is taller than screen
-                className="fixed inset-0 z-100 flex items-center justify-center p-4 md:p-10 backdrop-blur-3xl bg-black/80 overflow-y-auto"
-                onClick={() => setSelectedProject(null)}
-              >
-                <motion.div
-                  initial={{ scale: 0.9, y: 30, opacity: 0, rotateX: 10 }}
-                  animate={{ scale: 1, y: 0, opacity: 1, rotateX: 0 }}
-                  exit={{ scale: 0.9, y: 30, opacity: 0 }}
-                  onClick={(e) => e.stopPropagation()}
-                  // FIX: Changed max-h to screen-relative and enabled scrolling for content
-                  className="w-full max-w-7xl h-fit max-h-[90vh] overflow-y-auto no-scrollbar rounded-4xl border border-white/10 bg-zinc-950 shadow-[0_0_100px_rgba(0,0,0,1)] relative p-1"
-                >
-                  <div className="absolute inset-0 rounded-4xl border border-blue-500/20 pointer-events-none" />
+{/* LEVEL 3: PROJECT DEEP DIVE OVERLAY */}
+<AnimatePresence>
+  {selectedProject && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 backdrop-blur-3xl bg-black/40 dark:bg-black/80 overflow-y-auto"
+      onClick={() => setSelectedProject(null)}
+    >
+      <motion.div
+        initial={{ scale: 0.9, y: 30, opacity: 0, rotateX: 10 }}
+        animate={{ scale: 1, y: 0, opacity: 1, rotateX: 0 }}
+        exit={{ scale: 0.9, y: 30, opacity: 0 }}
+        onClick={(e) => e.stopPropagation()}
+        className="w-full max-w-7xl h-fit max-h-[90vh] overflow-y-auto no-scrollbar rounded-4xl border border-black/5 dark:border-white/10 bg-white dark:bg-zinc-950 shadow-2xl dark:shadow-[0_0_100px_rgba(0,0,0,1)] relative p-1 transition-colors duration-300"
+      >
+        <div className="absolute inset-0 rounded-4xl border border-blue-500/10 dark:border-blue-500/20 pointer-events-none" />
 
-                  <div className="bg-zinc-900/50 rounded-[1.9rem] p-6 md:p-10 relative overflow-hidden">
-                    {/* HEADER SECTION */}
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
-                      <div className="space-y-1">
-                        <div className="flex items-center gap-3">
-                          <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_#3b82f6]" />
-                          <span className="text-blue-500 font-mono text-[10px] tracking-[0.5em] font-black uppercase">Project_Dossier_v2.0</span>
-                        </div>
-                        <h3 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none">
-                          {selectedProject.title}
-                        </h3>
-                      </div>
-                      
-                      <button 
-                        onClick={() => setSelectedProject(null)}
-                        className="group relative px-8 py-3 overflow-hidden rounded-full bg-white/5 border border-white/10 text-white font-mono text-[10px] uppercase tracking-widest hover:border-red-500/50 transition-all"
-                      >
-                        <span className="relative z-10 group-hover:text-red-400">Terminate_Session</span>
-                        <div className="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/5 transition-all" />
-                      </button>
-                    </div>
+        <div className="bg-zinc-50 dark:bg-zinc-900/50 rounded-[1.9rem] p-6 md:p-10 relative overflow-hidden transition-colors duration-300">
+          {/* HEADER SECTION */}
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+            <div className="space-y-1">
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse shadow-[0_0_10px_#3b82f6]" />
+                <span className="text-blue-500 font-mono text-[10px] tracking-[0.5em] font-black uppercase">Project_Dossier_v2.0</span>
+              </div>
+              <h3 className="text-5xl md:text-7xl font-black text-zinc-900 dark:text-white uppercase tracking-tighter leading-none transition-colors duration-300">
+                {selectedProject.title}
+              </h3>
+            </div>
+            
+            <button 
+              onClick={() => setSelectedProject(null)}
+              className="group relative px-8 py-3 overflow-hidden rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-zinc-900 dark:text-white font-mono text-[10px] uppercase tracking-widest hover:border-red-500/50 transition-all"
+            >
+              <span className="relative z-10 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">Terminate_Session</span>
+              <div className="absolute inset-0 bg-red-500/0 group-hover:bg-red-500/5 transition-all" />
+            </button>
+          </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
-                      {/* 1. VISUAL INTERFACE (8/12) */}
-                      <div className="md:col-span-8 space-y-6">
-                        <div className="relative group aspect-video rounded-[2.5rem] overflow-hidden border border-white/10 bg-black">
-                          <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
-                          
-                          <img 
-                            src={selectedProject.image} 
-                            className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700" 
-                            alt={selectedProject.title} 
-                          />
-                          <div className="absolute inset-0 bg-linear-to-t from-zinc-950 via-transparent to-transparent z-10" />
-                          <div className="absolute top-6 left-6 z-30 flex gap-2">
-                            <div className="px-3 py-1 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 rounded-full text-[8px] font-black text-blue-400 uppercase tracking-widest">
-                              Encrypted_Stream
-                            </div>
-                            <div className="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[8px] font-black text-white/50 uppercase tracking-widest">
-                              {selectedProject.id}
-                            </div>
-                          </div>
-                        </div>
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+            {/* 1. VISUAL INTERFACE (8/12) */}
+            <div className="md:col-span-8 space-y-6">
+              <div className="relative group aspect-video rounded-[2.5rem] overflow-hidden border border-black/5 dark:border-white/10 bg-zinc-200 dark:bg-black transition-colors duration-300">
+                <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
+                
+                {/* Responsive Light/Dark Detailed Image Engine */}
+                <img 
+                  src={selectedProject.lightImage || selectedProject.image} 
+                  alt={selectedProject.title} 
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 dark:hidden transition-all duration-700" 
+                />
+                <img 
+                  src={selectedProject.image} 
+                  className="w-full h-full object-cover opacity-80 group-hover:opacity-100 hidden dark:block transition-all duration-700" 
+                  alt={selectedProject.title} 
+                />
 
-                        {/* TERMINAL BOX */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="p-8 rounded-4xl bg-black/40 border border-white/5 font-mono text-sm leading-relaxed">
-                             <p className="text-blue-500/60 text-[9px] font-black uppercase tracking-widest mb-4">Description_Module</p>
-                             <p className="text-zinc-300">
-                              {selectedProject.description}
-                             </p>
-                          </div>
-                          
-                          <div className="p-8 rounded-4xl bg-zinc-950 border border-white/5 font-mono relative overflow-hidden">
-                             <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-4">Console_Logs</p>
-                             <div className="space-y-1 text-[10px]">
-                                <p className="text-emerald-500/80">&gt; Initializing build process...</p>
-                                <p className="text-zinc-600">&gt; Loading environment configs</p>
-                                <p className="text-zinc-600">&gt; Handshake with {selectedProject.title} API</p>
-                                <p className="text-blue-400 animate-pulse">&gt; Ready for deployment</p>
-                             </div>
-                             <div className="absolute bottom-0 right-0 left-0 h-12 flex items-end gap-1 px-4 opacity-20">
-                                {[...Array(20)].map((_, i) => (
-                                  <div key={i} className="flex-1 bg-blue-500" style={{ height: `${Math.random() * 100}%` }} />
-                                ))}
-                             </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* 2. SPECIFICATION MATRIX (4/12) */}
-                      <div className="md:col-span-4 space-y-6">
-                        <div className="rounded-[2.5rem] border border-blue-500/10 bg-linear-to-br from-blue-500/5 to-transparent p-8">
-                          <div className="flex justify-between items-center mb-10">
-                            <h4 className="text-white text-xs font-black uppercase tracking-[0.3em]">Core_Tech</h4>
-                            <div className="px-2 py-0.5 rounded bg-blue-500 text-[8px] font-black text-white">001</div>
-                          </div>
-                          
-                          <div className="space-y-6">
-                            {selectedProject.tech.map((t, i) => (
-                              <div key={t} className="space-y-2 group">
-                                <div className="flex justify-between items-end">
-                                  <span className="text-zinc-500 font-mono text-[9px]">0{i+1}.SYS</span>
-                                  <span className="text-white font-black uppercase tracking-widest text-[11px] group-hover:text-blue-400 transition-colors">
-                                    {t}
-                                  </span>
-                                </div>
-                                <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden p-1px">
-                                   <motion.div 
-                                    initial={{ width: 0 }}
-                                    animate={{ width: "100%" }}
-                                    transition={{ delay: i * 0.1, duration: 1 }}
-                                    className="h-full bg-blue-500/40 rounded-full" 
-                                   />
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-
-                          <div className="mt-12 p-6 rounded-2xl bg-white/5 border border-white/5 space-y-4">
-                              <div className="flex justify-between items-center text-[10px] font-black uppercase">
-                                <span className="text-zinc-500">Stability_Index</span>
-                                <span className="text-blue-500">Operational</span>
-                              </div>
-                              <div className="text-5xl font-black text-white tracking-tighter">
-                                {selectedProject.stars || "S+"}
-                              </div>
-                          </div>
-                        </div>
-
-                        {/* ACTION COMMANDS */}
-                        <div className="space-y-3">
-                          <a href={selectedProject.github} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl bg-white text-black font-black uppercase text-center tracking-widest hover:bg-blue-500 hover:text-white transition-all">
-                            Open_Source_Repo
-                          </a>
-                          {selectedProject.link && (
-                            <a href={selectedProject.link} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl border border-white/10 text-white font-black uppercase text-center tracking-widest hover:bg-white/5 transition-all">
-                              Launch_Production
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent dark:from-zinc-950 z-10 transition-colors duration-300" />
+                <div className="absolute top-6 left-6 z-30 flex gap-2">
+                  <div className="px-3 py-1 bg-blue-500/10 backdrop-blur-md border border-blue-500/30 rounded-full text-[8px] font-black text-blue-500 dark:text-blue-400 uppercase tracking-widest">
+                    Encrypted_Stream
                   </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  <div className="px-3 py-1 bg-white/60 dark:bg-black/40 backdrop-blur-md border border-black/10 dark:border-white/10 rounded-full text-[8px] font-black text-zinc-600 dark:text-white/50 uppercase tracking-widest transition-colors duration-300">
+                    {selectedProject.id}
+                  </div>
+                </div>
+              </div>
+
+              {/* TERMINAL BOX */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-8 rounded-4xl bg-white dark:bg-black/40 border border-zinc-200 dark:border-white/5 font-mono text-sm leading-relaxed transition-colors duration-300">
+                   <p className="text-blue-600 dark:text-blue-500/60 text-[9px] font-black uppercase tracking-widest mb-4">Description_Module</p>
+                   <p className="text-zinc-700 dark:text-zinc-300 transition-colors duration-300">
+                    {selectedProject.description}
+                   </p>
+                </div>
+                
+                <div className="p-8 rounded-4xl bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-white/5 font-mono relative overflow-hidden transition-colors duration-300">
+                   <p className="text-zinc-500 text-[9px] font-black uppercase tracking-widest mb-4">Console_Logs</p>
+                   <div className="space-y-1 text-[10px]">
+                      <p className="text-emerald-600 dark:text-emerald-500/80">&gt; Initializing build process...</p>
+                      <p className="text-zinc-500 dark:text-zinc-600">&gt; Loading environment configs</p>
+                      <p className="text-zinc-500 dark:text-zinc-600">&gt; Handshake with {selectedProject.title} API</p>
+                      <p className="text-blue-600 dark:text-blue-400 animate-pulse">&gt; Ready for deployment</p>
+                   </div>
+                   <div className="absolute bottom-0 right-0 left-0 h-12 flex items-end gap-1 px-4 opacity-10 dark:opacity-20">
+                      {[...Array(20)].map((_, i) => (
+                        <div key={i} className="flex-1 bg-blue-500" style={{ height: `${Math.random() * 100}%` }} />
+                      ))}
+                   </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. SPECIFICATION MATRIX (4/12) */}
+            <div className="md:col-span-4 space-y-6">
+              <div className="rounded-[2.5rem] border border-blue-500/10 bg-gradient-to-br from-blue-500/5 to-transparent p-8">
+                <div className="flex justify-between items-center mb-10">
+                  <h4 className="text-zinc-800 dark:text-white text-xs font-black uppercase tracking-[0.3em] transition-colors">Core_Tech</h4>
+                  <div className="px-2 py-0.5 rounded bg-blue-500 text-[8px] font-black text-white">001</div>
+                </div>
+                
+                <div className="space-y-6">
+                  {selectedProject.tech.map((t, i) => (
+                    <div key={t} className="space-y-2 group">
+                      <div className="flex justify-between items-end">
+                        <span className="text-zinc-400 dark:text-zinc-500 font-mono text-[9px]">0{i+1}.SYS</span>
+                        <span className="text-zinc-900 dark:text-white font-black uppercase tracking-widest text-[11px] group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
+                          {t}
+                        </span>
+                      </div>
+                      <div className="h-1 w-full bg-black/5 dark:bg-white/5 rounded-full overflow-hidden p-[1px]">
+                         <motion.div 
+                          initial={{ width: 0 }}
+                          animate={{ width: "100%" }}
+                          transition={{ delay: i * 0.1, duration: 1 }}
+                          className="h-full bg-blue-500/40 rounded-full" 
+                         />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-12 p-6 rounded-2xl bg-black/5 dark:bg-white/5 border border-black/5 dark:border-white/5 space-y-4 transition-colors duration-300">
+                    <div className="flex justify-between items-center text-[10px] font-black uppercase">
+                      <span className="text-zinc-400 dark:text-zinc-500">Stability_Index</span>
+                      <span className="text-blue-500">Operational</span>
+                    </div>
+                    <div className="text-5xl font-black text-zinc-900 dark:text-white tracking-tighter transition-colors duration-300">
+                      {selectedProject.stars || "S+"}
+                    </div>
+                </div>
+              </div>
+
+              {/* ACTION COMMANDS */}
+              <div className="space-y-3">
+                <a href={selectedProject.github} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-black font-black uppercase text-center tracking-widest hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-white transition-all">
+                  Open_Source_Repo
+                </a>
+                {selectedProject.link && (
+                  <a href={selectedProject.link} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl border border-black/10 dark:border-white/10 text-zinc-900 dark:text-white font-black uppercase text-center tracking-widest hover:bg-black/5 dark:hover:bg-white/5 transition-all">
+                    Launch_Production
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+</AnimatePresence>
         </div> 
       </div>
     </section>
