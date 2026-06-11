@@ -76,6 +76,7 @@ export const allProjects: Project[] = [
     title: 'ScentXchange Market',
     description: 'E-commerce redistribution matrix featuring secure payload transactional data flows, stateful search matrices, and real-time ledger tracking.',
     image: '/assets/Demmiz.png',
+    lightImage: '/assets/Demmiz-light.png',
     github: 'https://github.com/your-username/perfume-resell',
     link: 'https://scentxchange.yourdomain.com',
     categoryIds: ['JS', 'DB'],
