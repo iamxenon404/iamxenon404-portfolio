@@ -42,7 +42,8 @@ export const allProjects: Project[] = [
     id: 'school-ecosystem',
     title: 'School Ecosystem Core',
     description: 'Multi-tiered institutional architecture syncing cross-platform mobile portals with a complex relational database management panel.',
-    image: DEPLOYED_IMAGE,
+    image: '/assets/school.png', // Replace with actual image path
+    lightImage: '/assets/school-light.png',
     github: 'https://github.com/your-username/school-ecosystem',
     link: 'https://school.yourdomain.com',
     categoryIds: ['FL', 'JS', 'PY', 'DB'],
