@@ -4,7 +4,7 @@ export interface Project {
   description: string;
   image: string;
   lightImage?: string; // Optional field for light mode image
-  github: string;
+  github?: string;
   link?: string;
   categoryIds: string[]; // Maps to the keys in stackData (e.g., ['JS', 'PY'])
   tech: string[];        // Specific sub-stack used in this project
