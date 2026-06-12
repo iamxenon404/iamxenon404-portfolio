@@ -44,7 +44,7 @@ export const allProjects: Project[] = [
     description: 'Multi-tiered institutional architecture syncing cross-platform mobile portals with a complex relational database management panel.',
     image: '/assets/school.png', // Replace with actual image path
     lightImage: '/assets/school-light.png',
-    github: 'https://github.com/your-username/school-ecosystem',
+    github: 'https://github.com/iamxenon404/',
     link: 'https://school.yourdomain.com',
     categoryIds: ['FL', 'JS', 'PY', 'DB'],
     tech: ['Flutter', 'React', 'Django', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
