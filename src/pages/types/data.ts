@@ -56,7 +56,7 @@ export const allProjects: Project[] = [
     description: 'High-performance interactive landing portal engineered with optimized component rendering and fluid responsive layout interfaces.',
     image: '/assets/meetminds.png', // Replace with actual image path
     lightImage: '/assets/meetminds-light.png',
-    github: 'https://github.com/your-username/meetminds',
+    github: 'https://github.com/iamxenon404/xenonotes',
     link: 'https://meetminds.yourdomain.com',
     categoryIds: ['JS'],
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
