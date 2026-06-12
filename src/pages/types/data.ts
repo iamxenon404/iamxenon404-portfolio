@@ -33,7 +33,7 @@ export const allProjects: Project[] = [
     image: '/assets/Xenlog.png', // Replace with actual image path
     lightImage: '/assets/Xenlog-light.png',
     github: 'https://github.com/iamxenon404/Xenolog404', // Replace with your actual repo link
-    link: 'https://webhook-tester.yourdomain.com',               // Replace or remove if not live
+    link: 'xenlog404.vercel.app',               // Replace or remove if not live
     categoryIds: ['JS'],
     tech: ['Next.js', 'Express', 'TypeScript', 'Tailwind CSS'],
     stars: '14'
