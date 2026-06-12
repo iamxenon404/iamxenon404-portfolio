@@ -79,8 +79,8 @@ export const allProjects: Project[] = [
     description: 'E-commerce redistribution matrix featuring secure payload transactional data flows, stateful search matrices, and real-time ledger tracking.',
     image: '/assets/Demmiz.png',
     lightImage: '/assets/Demmiz-light.png',
-    github: 'https://github.com/your-username/perfume-resell',
-    link: 'https://scentxchange.yourdomain.com',
+    github: 'https://github.com/iamxenon404/Demmiz',
+    link: 'https://demmiz.vercel.app',
     categoryIds: ['JS', 'DB'],
     tech: ['Next.js', 'NestJS', 'Prisma', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
     stars: '19'
