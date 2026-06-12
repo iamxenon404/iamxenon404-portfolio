@@ -44,7 +44,6 @@ export const allProjects: Project[] = [
     description: 'Multi-tiered institutional architecture syncing cross-platform mobile portals with a complex relational database management panel.',
     image: '/assets/school.png', // Replace with actual image path
     lightImage: '/assets/school-light.png',
-    // github: 'https://github.com/iamxenon404/',
     link: 'https://school-ecosystem-demo.vercel.app/',
     categoryIds: ['FL', 'JS', 'PY', 'DB'],
     tech: ['Flutter', 'React', 'Django', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
@@ -56,7 +55,6 @@ export const allProjects: Project[] = [
     description: 'High-performance interactive landing portal engineered with optimized component rendering and fluid responsive layout interfaces.',
     image: '/assets/meetminds.png', // Replace with actual image path
     lightImage: '/assets/meetminds-light.png',
-    // github: 'https://github.com/iamxenon404/xenonotes',
     link: 'https://www.xenonotes.com',
     categoryIds: ['JS'],
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
@@ -79,7 +77,6 @@ export const allProjects: Project[] = [
     description: 'E-commerce redistribution matrix featuring secure payload transactional data flows, stateful search matrices, and real-time ledger tracking.',
     image: '/assets/Demmiz.png',
     lightImage: '/assets/Demmiz-light.png',
-    // github: 'https://github.com/iamxenon404/Demmiz',
     link: 'https://demmiz.vercel.app',
     categoryIds: ['JS', 'DB'],
     tech: ['Next.js', 'NestJS', 'Prisma', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
