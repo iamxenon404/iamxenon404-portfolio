@@ -367,7 +367,6 @@ export default function Stack() {
               <div className="relative group aspect-video rounded-[2.5rem] overflow-hidden border border-black/5 dark:border-white/10 bg-zinc-200 dark:bg-black transition-colors duration-300">
                 <div className="absolute inset-0 z-20 pointer-events-none opacity-[0.03] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-size-[100%_2px,3px_100%]" />
                 
-                {/* Responsive Light/Dark Detailed Image Engine */}
                 <img 
                   src={selectedProject.lightImage || selectedProject.image} 
                   alt={selectedProject.title} 
@@ -458,9 +457,13 @@ export default function Stack() {
 
               {/* ACTION COMMANDS */}
               <div className="space-y-3">
-                <a href={selectedProject.github} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-black font-black uppercase text-center tracking-widest hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-white transition-all">
-                  Open_Source_Repo
-                </a>
+                {/* 🔥 FIXED: Only renders if github property exists and is not an empty string */}
+                {selectedProject.github && (
+                  <a href={selectedProject.github} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl bg-zinc-900 dark:bg-white text-white dark:text-black font-black uppercase text-center tracking-widest hover:bg-blue-500 dark:hover:bg-blue-500 hover:text-white dark:hover:text-white transition-all">
+                    Open_Source_Repo
+                  </a>
+                )}
+                
                 {selectedProject.link && (
                   <a href={selectedProject.link} target="_blank" rel="noreferrer" className="block p-5 rounded-2xl border border-black/10 dark:border-white/10 text-zinc-900 dark:text-white font-black uppercase text-center tracking-widest hover:bg-black/5 dark:hover:bg-white/5 transition-all">
                     Launch_Production
