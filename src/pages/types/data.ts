@@ -53,7 +53,8 @@ export const allProjects: Project[] = [
     id: 'meetminds',
     title: 'MeetMinds Platform',
     description: 'High-performance interactive landing portal engineered with optimized component rendering and fluid responsive layout interfaces.',
-    image: DEPLOYED_IMAGE,
+    image: '/assets/meetminds.png', // Replace with actual image path
+    lightImage: '/assets/meetminds-light.png',
     github: 'https://github.com/your-username/meetminds',
     link: 'https://meetminds.yourdomain.com',
     categoryIds: ['JS'],
