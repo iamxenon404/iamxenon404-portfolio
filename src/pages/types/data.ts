@@ -45,7 +45,7 @@ export const allProjects: Project[] = [
     image: '/assets/school.png', // Replace with actual image path
     lightImage: '/assets/school-light.png',
     github: 'https://github.com/iamxenon404/',
-    link: 'https://school.yourdomain.com',
+    link: 'https://school-ecosystem-demo.vercel.app/',
     categoryIds: ['FL', 'JS', 'PY', 'DB'],
     tech: ['Flutter', 'React', 'Django', 'PostgreSQL', 'TypeScript', 'Tailwind CSS'],
     stars: '38'
