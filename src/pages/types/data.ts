@@ -57,7 +57,7 @@ export const allProjects: Project[] = [
     image: '/assets/meetminds.png', // Replace with actual image path
     lightImage: '/assets/meetminds-light.png',
     github: 'https://github.com/iamxenon404/xenonotes',
-    link: 'https://meetminds.yourdomain.com',
+    link: 'https://www.xenonotes.com',
     categoryIds: ['JS'],
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     stars: '09'
